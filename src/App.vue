@@ -18,27 +18,6 @@
             </div>
           </div>
 
-
-          <div class="row">
-            <div class="col-3">
-              <p class="fs-5">Город</p>
-            </div>
-            <div class="col-9">
-              <input v-model="city" class="input-site border fs-5 p-2 " type="text">
-            </div>
-          </div>
-
-
-
-          <div class="row">
-            <div class="col-3">
-              <p class="fs-5">Фото</p>
-            </div>
-            <div class="col-9">
-              <input v-model="photo" class="input-site border fs-5 p-2 " type="text">
-            </div>
-          </div>
-
           <div class="row">
             <div class="col-3">
               <p class="fs-5">Фалимия</p>
@@ -66,6 +45,28 @@
               <input v-model="patronymic" class="input-site border fs-5 p-2 " type="text">
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-5">Город</p>
+            </div>
+            <div class="col-9">
+              <input v-model="city" class="input-site border fs-5 p-2 " type="text">
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-5">Фото</p>
+            </div>
+            <div class="col-9">
+              <input  v-model="photo" class="input-site border fs-5 p-2 " type="text">
+            </div>
+          </div>
+
+
 
 
           <div class="row">
@@ -98,6 +99,15 @@
 
           <div class="row">
             <div class="col-3">
+              <p class="fs-5">О себе</p>
+            </div>
+            <div class="col-9">
+              <textarea  v-model="about" class="input-site border fs-5 p-2" style="height: 200px;" maxlength="350" rows="7"></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
               <p class="fs-5">Образование</p>
             </div>
             <div class="col-9">
@@ -107,60 +117,52 @@
 
           <div class="row">
             <div class="col-3">
-              <p class="fs-5">Желаемая ЗП</p>
+              <p class="fs-5">Ключевые навыки</p>
+            </div>
+            <div class="col-9">
+              <textarea  v-model="skills" class="input-site border fs-5 p-2" style="height: 200px;" maxlength="150" rows="7"></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <p class="fs-5">Желаемая ЗП (Рубли)</p>
             </div>
             <div class="col-9">
               <input v-model="money" class="input-site border fs-5 p-2 " type="text">
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-3">
-              <p class="fs-5">Ключевые навыки</p>
-            </div>
-            <div class="col-9">
-              <input v-model="skills" class="input-site border fs-5 p-2 " type="text">
-            </div>
-          </div>
 
 
-          <div class="row">
-            <div class="col-3">
-              <p class="fs-5">О себе</p>
-            </div>
-            <div class="col-9">
-              <textarea  v-model="about" class="input-site border fs-5 p-2" style="height: 200px;" rows="7"></textarea>
-            </div>
-          </div>
+
+
 
         </form>
       </div>
+
       <div class="col">
         <h1>Ваше резюме</h1>
-        <div class="border p-3">
-          <p class="fs-5">Профессия</p>
-          <p class="fs-5">{{ profession }}</p>
-          <p class="fs-5">Город</p>
-          <p class="fs-5">{{ city }}</p>
-          <p class="fs-5">Фото</p>
-          <p class="fs-5">{{ photo }}</p>
-          <p class="fs-5">ФИО</p>
-          <p class="fs-5">{{ surname }} {{name}} {{patronymic}}</p>
-          <p class="fs-5">Телефон</p>
-          <p class="fs-5">{{ phone }}</p>
-          <p class="fs-5">Почта</p>
-          <p class="fs-5">{{ mail }}</p>
-          <p class="fs-5">Дата рождения</p>
-          <p class="fs-5">{{ bDate }}</p>
-          <p class="fs-5">Образование</p>
-          <p class="fs-5">{{ education }}</p>
-          <p class="fs-5">Желаемая ЗП</p>
-          <p class="fs-5">{{ money }}</p>
-          <p class="fs-5">Навыки</p>
-          <p class="fs-5">{{ skills }}</p>
-          <p class="fs-5">О себе</p>
-          <p class="fs-5">{{ about }}</p>
+        <div class="row">
+          <div class="col-6">
+            <p class="fs-5">{{ surname }} {{name}} {{patronymic}} - {{ profession }}</p>
+            <p class="fs-5">{{ mail }} {{ phone }}</p>
+            <img :src="photo" class="photo img-fluid">
+          </div>
+          <div class="col-6">
+            <p class="fs-5">{{ bDate }}</p>
+            <p class="fs-5">г. {{ city }}</p>
+            <p class="fs-5">О себе:</p>
+            <p class="fs-5">{{ about }}</p>
+          </div>
         </div>
+        <div class="row">
+          <p class="fs-5">Образование: {{ education }}</p>
+          <p class="fs-5">Навыки:</p>
+          <p class="fs-5">{{ skills }}</p>
+        </div>
+        <p class="fs-5 text-center">Желаемая ЗП: {{ money }} (Р)</p>
+
       </div>
     </div>
   </div>
@@ -170,31 +172,23 @@
 export default {
   data() {
     return {
-      feet: 0,
-      meter: 0,
-      fToM: 3.28,
-      profession: '',
-      city: '',
-      photo: '',
-      surname: '',
-      name: '',
-      patronymic: '',
-      phone: '',
-      mail: '',
-      bDate: '',
-      education: '',
-      money: '',
-      skills: '',
-      about: '',
+      profession: 'бухгалтер',
+      city: 'Чайхона',
+      photo: 'https://s00.yaplakal.com/pics/pics_original/5/9/2/14163295.jpg',
+      surname: 'Духанов',
+      name: 'Данила',
+      patronymic: 'Иванович',
+      phone: '89005553535',
+      mail: 'test@mail.ru',
+      bDate: '2022-11-22',
+      education: 'Высшее МГЧПУ (бывш. тракторный полетный первокосмический колледж)',
+      money: '7777',
+      skills: 'умный; крутой; соленый; лунный; космический; стрессолётный;',
+      about: 'Вспоминаю свой первый опыт выращивания рассады, это было и волнительно, и радостно одновременно: появилось новое увлекательное хобби – овощеводство. В первый же год вырастила хорошую рассаду томатов, перцев, баклажанов, лука-порея.\n' +
+          'В статье собрала свои наблюдения как новичка, надеюсь, будет полезно почитать начинающим дачникам.',
     }
   },
   methods: {
-    convertToMeter() {
-      this.meter = this.feet / this.fToM;
-    },
-    convertToFeet() {
-      this.feet = this.meter * this.fToM;
-    },
 
   }
 }
@@ -209,5 +203,8 @@ export default {
   height: 35px;
   border-radius: 3px;
   width: 400px;
+}
+.photo{
+
 }
 </style>
